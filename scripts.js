@@ -4,9 +4,9 @@ $(function() {
 
     // Create the map
     var map = new google.maps.Map($('.map-canvas')[0], {
-        zoom: 14,
+        zoom: 4,
         styles: mapStyle,
-        center: new google.maps.LatLng(40.72, -74)
+        center: new google.maps.LatLng(40, 40)
     });
 
     // Add a custom marker
@@ -24,6 +24,29 @@ $(function() {
         icon: markerIcon,
         position: new google.maps.LatLng(40.72, -74)
     });
+
+    $(document).ready(function(){
+      $.getJSON("https://api.reliefweb.int/v1/disasters", function(result){
+          var country_names = [];
+          var stringify = JSON.stringify(result);
+          var parser = JSON.parse(stringify);
+          var datas = parser.data;
+          for (var i = 0; i < datas.length; i++) {
+            var d = parser.data[i];
+            var name1 = JSON.stringify(d.fields.name);
+            var sub = name1.substr(0, name1.indexOf(':'));
+          $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + sub + "&key=AIzaSyAQZ3I_VFa87X15feDbXdYYn1T3vs35URA", function(result){
+            var lat = JSON.stringify(result['results'][0]['geometry']['location']['lat']);
+            var long = JSON.stringify(result['results'][0]['geometry']['location']['lng']);
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: markerIcon,
+                position: new google.maps.LatLng(lat, long)
+    });
+          });
+        }
+    });
+});
 
     // Set up handle bars
     var template = Handlebars.compile($('#marker-content-template').html());

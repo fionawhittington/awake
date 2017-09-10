@@ -22,7 +22,7 @@ $(function() {
     var marker = new google.maps.Marker({
         map: map,
         icon: markerIcon,
-        position: new google.maps.LatLng(40.72, -74)
+        position: new google.maps.LatLng(22.2587, 71.1924)
     });
     var country_names = [];
         // Set up handle bars
@@ -44,14 +44,21 @@ $(function() {
           var stringify = JSON.stringify(result);
           var parser = JSON.parse(stringify);
           var datas = parser.data;
-          var country_names = [];
+          var subtitles = ['subtitles', 'hey', 'there', 'there', 'there', 'there', 'there', 'there', 'there', 'there'];
+          var backgrounds = ['https://s3-eu-west-1.amazonaws.com/grm-assets/3663/accra-floods.jpg', 'http://www.arabnews.com/sites/default/files/styles/ph3_660_400/public/2017/07/02/941976-741640077.jpg?itok=2Mi-t2QO', 
+          'https://www.businessdayonline.com/wp-content/uploads/2016/10/Nigeria-economy.jpg', 
+          'http://s3.amazonaws.com/iexplore_web/images/assets/000/006/322/original/Tajikistan.jpg?1443185887', 
+          'https://static.rappler.com/images/earthquake-land-afp.jpg', 
+          'http://media4.s-nbcnews.com/j/MSNBC/Components/Slideshows/_production/_archive/News/_International%20News/Asia/_10/ss-100809-china-slide/ss-100817-china-flood-01.grid-9x2.jpg', 
+          'http://data1.ibtimes.co.in/cache-img-0-450/en/full/648352/1496042960_storm.jpg', 
+          'http://news.bbc.co.uk/media/images/46318000/jpg/_46318120_05_bf-floods7.jpg', 
+          'https://ak9.picdn.net/shutterstock/videos/13883975/thumb/1.jpg?i10c=img.resize(height:160)', 'https://www.rescue.org/sites/default/files/styles/window_width_breakpoints_theme_rescue_large_2x/public/hero/944/hero-image/03102016_tjump_ethiopia_017.jpg?itok=hRSpQnpI', ''];
           for (var i = 0; i < datas.length; ++i) {
             var d = parser.data[i];
             var name1 = JSON.stringify(d.fields.name);
             var sub = name1.substr(0, name1.indexOf(':'));
-            country_names.push(name1);
             console.log(name1);
-            function temp (nameTitle) {
+            function temp (nameTitle, subTitle, background) {
                 $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + sub + "&key=AIzaSyAQZ3I_VFa87X15feDbXdYYn1T3vs35URA", function(result){
                     var lat = JSON.stringify(result['results'][0]['geometry']['location']['lat']);
                     var long = JSON.stringify(result['results'][0]['geometry']['location']['lng']);
@@ -76,14 +83,17 @@ $(function() {
                         closeButtonMarkup: '<button type="button" class="custom-close">&#215;</button>',
                         content: template({
                             title: nameTitle,
-                            subtitle: 'For Snazzy Info Windows',
-                            bgImg: 'https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?dpr=1&auto=format&fit=crop&w=800&h=350&q=80&cs=tinysrgb&crop=',
+                            subtitle: subTitle,
+                            bgImg: background,
                             body: '<p><em>Photo by <a href="https://unsplash.com/@philipphenzler" target="_blank">Philipp Henzler</a>.</em></p>' +
                                   '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet elit et nibh tincidunt elementum eget quis orci.</p>' +
                                   '<p>Ut magna est, lobortis ut mollis eu, vulputate id turpis.</p>' +
                                   '<p>Pellentesque id lacus quis orci consequat pellentesque non non purus. Mauris ligula dolor, volutpat quis blandit at, luctus luctus quam. In hac habitasse platea dictumst.</p>' +
                                   '<p>In hac habitasse platea dictumst. In hac habitasse platea dictumst.</p>' +
-                                  '<p>Nam lorem dui, molestie nec elementum nec, lobortis sed lacus. Morbi nec tellus dolor. Etiam nec volutpat urna, pretium consectetur augue. In mattis, leo a ullamcorper venenatis, augue tortor cursus quam, nec mollis neque urna vitae lacus.</p>'
+                                  '<p>Nam lorem dui, molestie nec elementum nec, lobortis sed lacus. Morbi nec tellus dolor. Etiam nec volutpat urna, pretium consectetur augue. In mattis, leo a ullamcorper venenatis, augue tortor cursus quam, nec mollis neque urna vitae lacus.</p>' +
+                                  '<button id="donate"><a href="https://www.gofundme.com/gujarat-flood-relief-campaign" target="_blank">Donate</a></button>'+
+                                '<button id="donate"><a href="/story-1" target="_blank">VR Experience</a></button>'+
+                                '<button id="donate"><a href="/story-1" target="_blank">Share</a></button>'
                         }),
                         callbacks: {
                             open: function() {
@@ -111,7 +121,7 @@ $(function() {
                     });
                 });
             }
-            temp(name1);
+            temp(name1, subtitles[i], backgrounds[i]);
         }
     });
 

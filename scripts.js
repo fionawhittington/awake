@@ -45,7 +45,14 @@ $(function() {
           var parser = JSON.parse(stringify);
           var datas = parser.data;
           var subtitles = ['subtitles', 'hey', 'there', 'there', 'there', 'there', 'there', 'there', 'there', 'there'];
-          var backgrounds = ['', '', '', '', '', '', '', '', '', ''];
+          var backgrounds = ['https://s3-eu-west-1.amazonaws.com/grm-assets/3663/accra-floods.jpg', 'http://www.arabnews.com/sites/default/files/styles/ph3_660_400/public/2017/07/02/941976-741640077.jpg?itok=2Mi-t2QO', 
+          'https://www.businessdayonline.com/wp-content/uploads/2016/10/Nigeria-economy.jpg', 
+          'http://s3.amazonaws.com/iexplore_web/images/assets/000/006/322/original/Tajikistan.jpg?1443185887', 
+          'https://static.rappler.com/images/earthquake-land-afp.jpg', 
+          'http://media4.s-nbcnews.com/j/MSNBC/Components/Slideshows/_production/_archive/News/_International%20News/Asia/_10/ss-100809-china-slide/ss-100817-china-flood-01.grid-9x2.jpg', 
+          'http://data1.ibtimes.co.in/cache-img-0-450/en/full/648352/1496042960_storm.jpg', 
+          'http://news.bbc.co.uk/media/images/46318000/jpg/_46318120_05_bf-floods7.jpg', 
+          'https://ak9.picdn.net/shutterstock/videos/13883975/thumb/1.jpg?i10c=img.resize(height:160)', 'https://www.rescue.org/sites/default/files/styles/window_width_breakpoints_theme_rescue_large_2x/public/hero/944/hero-image/03102016_tjump_ethiopia_017.jpg?itok=hRSpQnpI', ''];
           for (var i = 0; i < datas.length; ++i) {
             var d = parser.data[i];
             var name1 = JSON.stringify(d.fields.name);

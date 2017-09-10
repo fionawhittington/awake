@@ -22,7 +22,7 @@ $(function() {
     var marker = new google.maps.Marker({
         map: map,
         icon: markerIcon,
-        position: new google.maps.LatLng(40.72, -74)
+        position: new google.maps.LatLng(22.2587, 71.1924)
     });
     var country_names = [];
         // Set up handle bars
@@ -44,14 +44,14 @@ $(function() {
           var stringify = JSON.stringify(result);
           var parser = JSON.parse(stringify);
           var datas = parser.data;
-          var country_names = [];
+          var subtitles = ['subtitles', 'hey', 'there', 'there', 'there', 'there', 'there', 'there', 'there', 'there'];
+          var backgrounds = ['', '', '', '', '', '', '', '', '', ''];
           for (var i = 0; i < datas.length; ++i) {
             var d = parser.data[i];
             var name1 = JSON.stringify(d.fields.name);
             var sub = name1.substr(0, name1.indexOf(':'));
-            country_names.push(name1);
             console.log(name1);
-            function temp (nameTitle) {
+            function temp (nameTitle, subTitle, background) {
                 $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + sub + "&key=AIzaSyAQZ3I_VFa87X15feDbXdYYn1T3vs35URA", function(result){
                     var lat = JSON.stringify(result['results'][0]['geometry']['location']['lat']);
                     var long = JSON.stringify(result['results'][0]['geometry']['location']['lng']);
@@ -76,14 +76,17 @@ $(function() {
                         closeButtonMarkup: '<button type="button" class="custom-close">&#215;</button>',
                         content: template({
                             title: nameTitle,
-                            subtitle: 'For Snazzy Info Windows',
-                            bgImg: 'https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?dpr=1&auto=format&fit=crop&w=800&h=350&q=80&cs=tinysrgb&crop=',
+                            subtitle: subTitle,
+                            bgImg: background,
                             body: '<p><em>Photo by <a href="https://unsplash.com/@philipphenzler" target="_blank">Philipp Henzler</a>.</em></p>' +
                                   '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce imperdiet elit et nibh tincidunt elementum eget quis orci.</p>' +
                                   '<p>Ut magna est, lobortis ut mollis eu, vulputate id turpis.</p>' +
                                   '<p>Pellentesque id lacus quis orci consequat pellentesque non non purus. Mauris ligula dolor, volutpat quis blandit at, luctus luctus quam. In hac habitasse platea dictumst.</p>' +
                                   '<p>In hac habitasse platea dictumst. In hac habitasse platea dictumst.</p>' +
-                                  '<p>Nam lorem dui, molestie nec elementum nec, lobortis sed lacus. Morbi nec tellus dolor. Etiam nec volutpat urna, pretium consectetur augue. In mattis, leo a ullamcorper venenatis, augue tortor cursus quam, nec mollis neque urna vitae lacus.</p>'
+                                  '<p>Nam lorem dui, molestie nec elementum nec, lobortis sed lacus. Morbi nec tellus dolor. Etiam nec volutpat urna, pretium consectetur augue. In mattis, leo a ullamcorper venenatis, augue tortor cursus quam, nec mollis neque urna vitae lacus.</p>' +
+                                  '<button id="donate"><a href="https://www.gofundme.com/gujarat-flood-relief-campaign" target="_blank">Donate</a></button>'+
+                                '<button id="donate"><a href="/story-1" target="_blank">VR Experience</a></button>'+
+                                '<button id="donate"><a href="/story-1" target="_blank">Share</a></button>'
                         }),
                         callbacks: {
                             open: function() {
@@ -111,7 +114,7 @@ $(function() {
                     });
                 });
             }
-            temp(name1);
+            temp(name1, subtitles[i], backgrounds[i]);
         }
     });
 

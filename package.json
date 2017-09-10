@@ -63,5 +63,8 @@
     "gulp": "gulp",
     "update-modules": "npm update --save-dev && npm-check-updates -u",
     "clean": "rimraf ./node_modules"
+  },
+  "dependencies": {
+    "google-panorama-equirectangular": "^2.1.0"
   }
 }

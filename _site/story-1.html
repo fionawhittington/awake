@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; Image</title>
+    <meta name="description" content="360&deg; Image - A-Frame">
+    <script src="../../../dist/aframe-master.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?v=3.21"></script>
+     <style>
+      iframe {
+        z-index:-1;
+      }
+      #over {
+        font-size:5em;
+        position:absolute;
+        top:35px;
+        left:82px;
+        z-index:2;
+        background-color:#DC1B2E;
+        color:white;
+        padding:24px;
+        padding-right:56px;
+        font-size:20px;
+        font-family:"arial";
+      }
+      #over-2 {
+        font-size:5em;
+        position:absolute;
+        top:150px;
+        left:82px;
+        z-index:2;
+        color:black;
+        background-color:white;
+        padding:19.5px;
+        font-size:16px;
+        font-family:"arial";
+        white-space: wrap;
+        width:150px;
+        margin-bottom:10px;
+      }
+      #link {
+        color:white;
+        background-color: #DC1B2E;
+        padding:5px;
+        text-decoration:none;
+      }
+      #home {
+        width:50px;
+        height:50px;
+        position:absolute;
+        top:45px;
+        left:20px;
+        z-index:2;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+      #point {
+        width:50px;
+        height:50px;
+        position:absolute;
+        top:95px;
+        left:98px;
+        z-index:2;
+        -moz-transform: scaleY(-1);
+        -o-transform: scaleY(-1);
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        filter: FlipV;
+        -ms-filter: "FlipV";
+      }
+     </style>
+  </head>
+  <body>
+    <iframe src="https://www.360cities.net/image/hochwasser-flood-tierpark-weinau-zittau-11-europe/vr" width="1280" height="800"></iframe>
+    <a href="index.html"><img src ="arrow.png" id="home"></a>
+    <div id="over">Gujrat, India</div>
+    <img src="triangle.png" id="point">
+    <div id="over-2">According to New Delhi Television Limited, "The official death toll from the floods in Gujarat stands at 111, with more than 36,000 people evacuated to safe areas as helicopters and boats try to reach those still stranded."
+    <br>
+    <br>
+    <a href="http://www.ndtv.com/india-news/17-members-of-same-gujarat-family-found-dead-in-floods-police-1729535" id="link" target="_blank">Learn More</a>
+    </div>
+  </body>
+</html>

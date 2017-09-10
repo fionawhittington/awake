@@ -61,7 +61,9 @@ $(function() {
                   '<p>Nearly 130,000 people have been relocated to safer ground in Gujarat state after hundreds of cities and villages were devastated by weeks of torrential rain.</p>' +
                   '<p>Helicopters and boats are combing areas including the deluged Banaskantha district where 25 bodies, including 17 members of one family, were discovered in two submerged villages last week.</p>' +
                   '<p>On Sunday, surviving members of the family met the Gujarat chief minister, Vijay Rupani, who said the rainfall had triggered “the worst flood of the century” in parts of the state.</p>' +
-                  '<button id="donate">Donate</button>'
+                  '<button id="donate"><a href="https://www.gofundme.com/gujarat-flood-relief-campaign" target="_blank">Donate</a></button>'+
+                  '<button id="donate"><a href="/story-1" target="_blank">VR Experience</a></button>'+
+                  '<button id="donate"><a href="/story-1" target="_blank">Share</a></button>'
         }),
         callbacks: {
             open: function() {

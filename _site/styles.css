@@ -38,6 +38,10 @@
   color:white;
   margin-right: 10px;
 }
+#donate:hover {
+  background-color:#b01423;
+  color:white;
+}
 
 .si-wrapper-bottom {
   -webkit-box-orient: vertical;
@@ -316,7 +320,7 @@ body {
     text-decoration:none;
     font-weight:400; }
     .custom-body a:hover, .custom-body a:focus, .custom-body a:active {
-      color: #437369; }
+      color: white; }
 
 .custom-close {
   position: absolute;
